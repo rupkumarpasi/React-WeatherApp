@@ -5,7 +5,7 @@ justify-content: center;
 }
 
 .main-weather{
-  width: 70vmin;
+  width: 80vmin;
   /* border: 2px solid blue; */
   display: flex;
   gap: 4vmin;
@@ -17,16 +17,16 @@ justify-content: center;
   font-weight: 900; 
 }
 #searchcity{
-width: 40vmin;
-height: 6vmin;
+width: 60vmin;
+height: 7vmin;
 border-radius: 100px;
 font-size: 2vmin;
 text-align: center;
 font-weight: 600;
 }
 #getWeather{
-  width: 30vmin;
-  height: 5vmin;
+  width: 40vmin;
+  height: 7vmin;
   border-radius: 100px;
   font-size: 2vmin;
   text-align: center;
@@ -34,3 +34,6 @@ font-weight: 600;
   margin-bottom: 2vmin;
 }
 
+#datename{
+  font-size: 3vmin;
+}
