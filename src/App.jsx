@@ -10,7 +10,8 @@ const mystyle={
   alignItems : 'center'
 }
   const [weatherData, setWeatherData] = useState(null);
-  const [city, setcity] = useState("Butwal"); // You can change the city name
+  const [city, setcity] = useState("Butwal");
+   const [error, setError] = useState(false); // You can change the city name
   const weatherApi = "696d501ad8e647a89094f16a8790a32b"; // Replace with your actual API key
 
   useEffect(() => {
@@ -21,7 +22,10 @@ const mystyle={
       .then((data) => {
         setWeatherData(data);
       })
-      .catch((err) => console.error("Error fetching weather:", err));
+      .catch((err) =>
+        console.error("Error fetching weather:", err));
+      setError(true);
+      setWeatherData(null)
   }, [city]);
   const capitalize = (word)=>{
     let lower = word.toLowerCase();
@@ -32,6 +36,7 @@ function onclick(){
   let searchcity = document.getElementById('searchcity').value;
 setcity(capitalize(searchcity));
 }
+
   return (
     <>
      <div className="main-weather">
@@ -41,12 +46,13 @@ setcity(capitalize(searchcity));
   <button id="getWeather" onClick={onclick} type="button" className="btn btn-success">Get Weather</button>
  
  <div className="citytime">
- <h1 style={{textAlign:'center'}}>{city}</h1>
+ <h1 style={{textAlign:'center'}}>{ city}</h1>
  <h6 id="datename">{Date()}</h6>
  </div>
   
 <img src="https://cdn-icons-png.flaticon.com/128/12607/12607703.png" alt="" />
-{weatherData ? (
+
+{weatherData && weatherData.main ? (
 <div className="tempsection" style={mystyle}>
   <h6>{weatherData.main.temp}°C</h6>
   <h6>{weatherData.weather[0].description}</h6>
@@ -55,6 +61,7 @@ setcity(capitalize(searchcity));
   ) : (
     <p>Loading weather...</p>
   )}
+  
  </div>
     </>
   )
